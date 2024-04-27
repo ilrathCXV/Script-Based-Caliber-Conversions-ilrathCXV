@@ -278,7 +278,133 @@ function try_caliber_change(caliber_kit, weapon)
 	news_manager.send_tip(db.actor, gt("cxv_conversion_success_msg") .. " " .. gt(ini_sys:r_string(caliber_kit:section(), "inv_name")), nil, "swiss_knife", 6000)
 end
 
+-- Highlight compatible upgrade kits
+local focus_last_sec
+local focus_tbl = {}
+function ActorMenu_on_item_focus_receive(obj) -- highlight compatible items
+	
+	local wep_focus = obj:section()
+	if (focus_last_sec ~= wep_focus) then
+		local id = obj:id()
+		focus_last_sec = wep_focus
+		empty_table(focus_tbl)
+		
+		-- For weapons
+		if IsWeapon(obj) and not IsItem("fake_ammo_wpn",wep_focus) then
+		
+			local weapon_category = get_weapon_category(obj)
+			if weapon_category == "empty hands" then
+				return
+			end
+			
+			-- Exception checking first...
+			-- rifle exception
+			if rifle_excpetions[wep_focus] then 
+				for c_upgr,_ in pairs(rifle_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+			
+			-- heavy lmg exception
+			elseif heavy_excpetions[wep_focus] then
+				for c_upgr,_ in pairs(heavy_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+				
+				for c_upgr,_ in pairs(lmg_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+			
+			-- On to regular type checking
+			-- pistol/SMG checking
+			elseif (weapon_category == "w_pistol") or (weapon_category == "w_smg") then
+				for c_upgr,_ in pairs(pistol_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+			
+			-- sniper checking
+			elseif (weapon_category == "w_sniper") then
+				for c_upgr,_ in pairs(sniper_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+			
+			-- shotgun checking
+			elseif (weapon_category == "w_shotgun") then
+				for c_upgr,_ in pairs(shotgun_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+			
+			-- rifle checking
+			elseif (weapon_category == "w_rifle") then
+				-- weight for checking for LMGs (base weight, not upgraded weight) - based off of "Outfits Affect Movespeed"
+				local weight = ini_sys:r_float_ex(wep_focus, "inv_weight")
+				if weight <= 3.5 then
+					weapon_category = "w_rifle"
+				elseif weight <= 5.86 then
+					weapon_category = "w_hybrid"
+				else
+					weapon_category = "w_lmg"
+				end
+
+				if (weapon_category == "w_rifle") then
+					for c_upgr,_ in pairs(rifle_upgrades) do
+						focus_tbl[#focus_tbl + 1] = c_upgr
+					end
+				end
+				
+				if (weapon_category == "w_hybrid") then
+					for c_upgr,_ in pairs(rifle_upgrades) do
+						focus_tbl[#focus_tbl + 1] = c_upgr
+					end
+					
+					for c_upgr,_ in pairs(lmg_upgrades) do
+						focus_tbl[#focus_tbl + 1] = c_upgr
+					end
+				end
+				
+				if (weapon_category == "w_lmg") then
+					for c_upgr,_ in pairs(lmg_upgrades) do
+						focus_tbl[#focus_tbl + 1] = c_upgr
+					end
+					
+					for c_upgr,_ in pairs(heavy_upgrades) do
+						focus_tbl[#focus_tbl + 1] = c_upgr
+					end
+				end
+
+			
+			-- Minigun checking
+			elseif (weapon_category == "w_heavy") then
+				for c_upgr,_ in pairs(heavy_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+				
+				for c_upgr,_ in pairs(lmg_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+			end
+			
+		end	
+		
+	end
+	
+	local inventory = GetActorMenu()
+	if not ((#focus_tbl > 0) or (inventory and inventory:IsShown())) then
+		return
+	end
+	
+	for i=1,#focus_tbl do 
+		inventory:highlight_section_in_slot(focus_tbl[i],EDDListType.iActorBag)
+		inventory:highlight_section_in_slot(focus_tbl[i],EDDListType.iPartnerTradeBag)
+		inventory:highlight_section_in_slot(focus_tbl[i],EDDListType.iDeadBodyBag)
+		inventory:highlight_section_in_slot(focus_tbl[i],EDDListType.iActorTrade)
+		inventory:highlight_section_in_slot(focus_tbl[i],EDDListType.iPartnerTrade)
+	end
+end
+
+
+
 function on_game_start()
+	RegisterScriptCallback("ActorMenu_on_item_focus_receive",ActorMenu_on_item_focus_receive)
 	RegisterScriptCallback("ActorMenu_on_item_drag_drop", cxv_caliber_conversion_drag_drop)
 end
 
