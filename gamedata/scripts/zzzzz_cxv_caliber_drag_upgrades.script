@@ -1,0 +1,368 @@
+local pistol_upgrades = {
+	["upgr_caliber_9x19"] = true,
+	["upgr_caliber_9x18"] = true,
+	["upgr_caliber_11.43x23"] = true,
+	["upgr_caliber_357"] = true,
+	["upgr_caliber_7.62x25"] = true,
+	["upgr_caliber_5.7x28"] = true,
+	["upgr_caliber_9x21"] = true,
+}
+
+local rifle_upgrades = {
+	["upgr_caliber_5.45x39"] = true,
+	["upgr_caliber_5.56x45"] = true,
+	["upgr_caliber_7.62x39"] = true,
+	["upgr_caliber_7.62x51"] = true,
+	["upgr_caliber_12.7x55"] = true,
+	["upgr_caliber_9x39"] = true,
+}
+
+local sniper_upgrades = {
+	["upgr_caliber_7.62x39"] = true,
+	["upgr_caliber_7.62x51"] = true,
+	["upgr_caliber_12.7x55"] = true,
+	["upgr_caliber_9x39"] = true,
+	["upgr_caliber_7.62x54"] = true,
+	["upgr_caliber_7.92x33"] = true,
+	["upgr_caliber_338_lapua"] = true,
+	["upgr_caliber_338_federal"] = true,
+}
+
+local lmg_upgrades = {
+	["upgr_caliber_5.56x45"] = true,
+	["upgr_caliber_7.62x39"] = true,
+	["upgr_caliber_7.62x51"] = true,
+	["upgr_caliber_7.92x33"] = true,
+	["upgr_caliber_12.7x55"] = true,
+}
+
+local heavy_upgrades = {
+	["upgr_caliber_338_lapua"] = true,
+	["upgr_caliber_338_federal"] = true,
+	["upgr_caliber_pkm_100"] = true,
+}
+
+local shotgun_upgrades = {
+	["upgr_caliber_12x70"] = true,
+	["upgr_caliber_20x70"] = true,
+	["upgr_caliber_23x75"] = true,
+	["upgr_caliber_12.7x55"] = true,
+}
+
+local ignored_category = {
+	["w_explosive"] = true,
+	["w_misc"] = true,
+	["w_melee"] = true,
+}
+
+local rifle_excpetions = {
+	["wpn_arbiter_revolver"] = true,
+	["wpn_double_ar"] = true,
+}
+
+local heavy_excpetions = {
+	["wpn_fg42"] = true,
+}
+
+local gt = game.translate_string
+
+function get_weapon_category(obj)	-- weapon
+    if not obj then return "empty hands" end
+    local kind = ini_sys:r_string(obj:section(), "kind") or "empty hands"
+	if ignored_category[kind] then
+		return "empty hands"
+	end
+    return kind
+end
+
+--------------------------------------------------------------------------------------------------------------
+
+function cxv_caliber_conversion_drag_drop(obj_dragged, obj_wpn, slot_from, slot_to)
+	
+	-- if item being dragged is not our caliber upgrades...
+	local drag_sec = obj_dragged:section()
+	if not string.find(drag_sec, "upgr_caliber") then return end
+
+	-- if item being dragged to is not a valid weapon...
+	if not IsWeapon(obj_wpn) or IsItem("fake_ammo_wpn",obj_wpn:section()) then return end
+	
+	-- Check if both items are in the the player's bag
+	if not (slot_from == EDDListType.iActorBag and slot_to == EDDListType.iActorBag) then
+		news_manager.send_tip(db.actor, gt("cxv_wrong_bag_type_msg"), nil, "swiss_knife", 6000)
+        return
+    end
+	
+	-- printf("[CXV Caliber] Item being dragged: %s | Item dragged to: %s", obj_dragged:section(), obj_wpn:section())
+	
+	local weapon_category = get_weapon_category(obj_wpn)
+	if weapon_category == "empty hands" then
+		news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+		return
+	end
+	
+	local wpn_sec = obj_wpn:section()
+	if not wpn_sec then return end
+	
+	-- Exception checking first...
+	-- rifle exception
+	if rifle_excpetions[wpn_sec] then 
+		if not rifle_upgrades[drag_sec] then
+			news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+			return
+		end
+		
+		try_caliber_change(obj_dragged, obj_wpn)
+		alife_release(obj_dragged)
+		return
+	end
+	
+	-- heavy lmg exception
+	if heavy_excpetions[wpn_sec] then
+		if (not lmg_upgrades[drag_sec] and not heavy_upgrades[drag_sec]) then
+			news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+			return
+		end
+		
+		try_caliber_change(obj_dragged, obj_wpn)
+		alife_release(obj_dragged)
+		return
+	end
+	
+	-- On to regular type checking
+	-- pistol/SMG checking
+	if (weapon_category == "w_pistol") or (weapon_category == "w_smg") then
+		if not pistol_upgrades[drag_sec] then
+			news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+			return
+		end
+		
+		try_caliber_change(obj_dragged, obj_wpn)
+		alife_release(obj_dragged)
+		return
+	end
+	
+	-- sniper checking
+	if (weapon_category == "w_sniper") then
+		if not sniper_upgrades[drag_sec] then
+			news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+			return
+		end
+	
+		try_caliber_change(obj_dragged, obj_wpn)
+		alife_release(obj_dragged)
+		return
+	end
+	
+	-- shotgun checking
+	if (weapon_category == "w_shotgun") then
+		if not shotgun_upgrades[drag_sec] then
+			news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+			return
+		end
+		
+		try_caliber_change(obj_dragged, obj_wpn)
+		alife_release(obj_dragged)
+		return
+	end
+	
+	-- rifle checking
+	if (weapon_category == "w_rifle") then
+		-- weight for checking for LMGs (base weight, not upgraded weight) - based off of "Outfits Affect Movespeed"
+		local weight = ini_sys:r_float_ex(obj_wpn:section(), "inv_weight")
+		if weight <= 3.5 then
+			weapon_category = "w_rifle"
+		elseif weight <= 5.86 then
+			weapon_category = "w_hybrid"
+		else
+			weapon_category = "w_lmg"
+		end
+		
+		-- QoL error messages
+		if (weapon_category == "w_rifle") and not rifle_upgrades[drag_sec] then
+			news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+			return
+		end
+		
+		if (weapon_category == "w_hybrid") and (not rifle_upgrades[drag_sec] and not lmg_upgrades[drag_sec]) then
+			news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+			return
+		end
+		
+		if (weapon_category == "w_lmg") and (not lmg_upgrades[drag_sec] and not heavy_upgrades[drag_sec]) then
+			news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+			return
+		end
+		
+		try_caliber_change(obj_dragged, obj_wpn)
+		alife_release(obj_dragged)
+		return
+	end
+	
+	-- Minigun checking
+	if (weapon_category == "w_heavy") then
+		if (not lmg_upgrades[drag_sec] and not heavy_upgrades[drag_sec]) then
+			news_manager.send_tip(db.actor, gt("cxv_wrong_weapon_type_msg"), nil, "swiss_knife", 6000)
+			return
+		end
+		
+		try_caliber_change(obj_dragged, obj_wpn)
+		alife_release(obj_dragged)
+		return
+	end
+
+end
+
+-- Logic from ui_workshop.script
+function try_caliber_change(caliber_kit, weapon)
+	
+	-- check if kit has an upgrade
+	local kit_section = ini_sys:r_string(caliber_kit:section(), "upgrade") or nil
+	if not kit_section then return end
+
+	-- might not need this but might as well for now
+	local upgr_order = {}
+	local size_t = 0
+	local upg_gr = { [1] = "first", [2] = "secon", [3] = "third", [4] = "fourt", [5] = "fifth" }
+	local upg_ind = { [1] = "a", [2] = "b", [3] = "c", [4] = "d", [5] = "e", [6] = "f" }
+	for i=1,#upg_gr do
+		for j=1,#upg_ind do
+			size_t = size_t + 1
+			upgr_order[size_t] = upg_gr[i] .. upg_ind[j]
+		end
+	end
+
+	-- Get installed upgrades
+	local inst_upgr = utils_item.get_upgrades_installed(weapon, nil, true)
+	if inst_upgr[kit_section] then return end	-- don't want to install a duplicate
+	
+	-- Remove previous caliber upgrades? (caliber upgrades don't show since they aren't actually part of the upgrade mapping)
+--	for i=1, #inst_upgr do
+--		printf("[CXV Caliber] Checking for caliber upgrades: %s", inst_upgr[i])
+--		if string.find(inst_upgr[i], "_caliber") then
+--			inst_upgr[i] = nil
+--		end
+--	end
+	
+	-- unload weapon to avoid crashes
+	weapon:force_unload_magazine(true)
+	item_weapon.clear_cache(weapon)
+	
+	-- Sort upgrades
+	k2t_table(inst_upgr)
+	local sort_tbl = {}
+	for i=1,#upgr_order do
+		for j=1,#inst_upgr do
+			if string.find(inst_upgr[j],upgr_order[i]) then
+				sort_tbl[#sort_tbl+1] = inst_upgr[j]
+				break
+			end
+		end
+	end
+	
+	-- add caliber upgrade
+	sort_tbl[#sort_tbl+1] = kit_section
+	
+	-- Install upgrades
+	inventory_upgrades.force_upgrade = true
+	
+	-- install current upgrades first
+	for i=1,#sort_tbl do
+		printf("installing: %s - for [%s]", sort_tbl[i], weapon:name())
+		weapon:install_upgrade(sort_tbl[i])
+	end
+	
+	inventory_upgrades.force_upgrade = false
+	
+	actor_effects.play_item_fx("craft_dummy")
+	
+	news_manager.send_tip(db.actor, gt("cxv_conversion_success_msg") .. " " .. gt(ini_sys:r_string(caliber_kit:section(), "inv_name")), nil, "swiss_knife", 6000)
+end
+
+function on_game_start()
+	RegisterScriptCallback("ActorMenu_on_item_drag_drop", cxv_caliber_conversion_drag_drop)
+end
+
+--------------------------------------------------------------------------------------------------------------
+
+-- Streamlined Kits monkeypatch
+--base_kit_binder = kit_binder.kit_binder.update
+--
+--kit_binder.kit_binder.update = function(self, delta)
+--	local obj  = self.object
+--	local sec = obj:section()
+--	
+--	if string.find(sec, "upgr_caliber") then return end
+--	base_kit_binder(self, delta)
+--end
+
+-- WPO shuts up about non-compat. part
+base_part_drop = arti_jamming.on_item_drag_dropped
+function arti_jamming.on_item_drag_dropped(obj_1, obj_2, slot_from, slot_to)
+
+	-- if item being dragged is our caliber upgrades, just get out of here
+	local drag_sec = obj_1:section()
+	if string.find(drag_sec, "upgr_caliber") then return end
+	
+	base_part_drop(obj_1, obj_2, slot_from, slot_to)
+end
+
+--------------------------------------------------------------------------------------------------------------
+
+-- Show class in tooltip
+build_footer_base = ui_item.build_desc_footer
+function ui_item.build_desc_footer(obj, sec, str)
+	str = str or gt(ini_sys:r_string_ex(sec, "description"))
+	if (not str) then return "" end
+	
+	-- if item is not a valid weapon...
+	if not IsWeapon(obj) or IsItem("fake_ammo_wpn",sec) then return build_footer_base(obj, sec, str) end
+	
+	local weapon_category = get_weapon_category(obj)
+	if weapon_category == "empty hands" then return build_footer_base(obj, sec, str) end
+	
+	local p_clr = utils_xml.get_color("d_purple")
+	local w_clr = utils_xml.get_color("pda_white")
+	local def_clr = utils_xml.get_color("ui_gray_1")
+	
+	local class_str
+	
+	if rifle_excpetions[sec] then weapon_category = "w_rifle" end
+	
+	-- pistol/SMG checking
+	if (weapon_category == "w_pistol") or (weapon_category == "w_smg") then
+		class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_pistol_title") .. "\\n \\n" .. def_clr
+	end
+	
+	-- sniper checking
+	if (weapon_category == "w_sniper") then
+		class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_sniper_title") .. "\\n \\n" .. def_clr
+	end
+	
+	-- shotgun checking
+	if (weapon_category == "w_shotgun") then
+		class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_shotgun_title") .. "\\n \\n" .. def_clr
+	end
+	
+	-- rifle/LMG checking
+	if (weapon_category == "w_rifle") then
+		-- weight for checking for LMGs (base weight, not upgraded weight) - based off of "Outfits Affect Movespeed"
+		local weight = ini_sys:r_float_ex(sec, "inv_weight")
+		if weight <= 3.5 then
+			class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_ar_title") .. "\\n \\n" .. def_clr
+		elseif weight <= 5.86 then
+			class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_ar_title") .. ", " .. gt("cxv_class_lmg_title") .. "\\n \\n" .. def_clr
+		else
+			class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_lmg_title") .. ", " .. gt("cxv_class_heavy_title") .. "\\n \\n" .. def_clr
+		end
+	end
+	
+	if (weapon_category == "w_heavy") then
+		class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_lmg_title") .. ", " .. gt("cxv_class_heavy_title") .. "\\n \\n" .. def_clr
+	end
+	
+	if class_str then
+		return build_footer_base(obj, sec, str) .. class_str
+	end
+	
+	return build_footer_base(obj, sec, str)
+end

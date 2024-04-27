@@ -1,0 +1,209 @@
+[up_sect_firsta_toz34_caliber_338_federal];.338 Federal
+cost                                     = 8000
+value                                    = ".338 Federal"
+ammo_class                  			 = ammo_338_federal
+
+cam_dispersion                           = +0.12
+zoom_cam_dispersion						 = +0.06
+cam_dispersion_inc                       = +0.02
+condition_shot_dec                       = +0.00015
+condition_queue_shot_dec                 = +0.00015
+
+inv_weight                               = +0.25
+
+[up_sect_secona_toz34_caliber_magnum_300];magnum_300/.338 Lapua
+cost                                     = 10000
+value                                    = ".338 Lapua"
+ammo_class                  = ammo_magnum_300, ammo_magnum_300_bad, ammo_magnum_300_verybad
+
+cam_dispersion                           = +0.12
+zoom_cam_dispersion						 = +0.06
+cam_dispersion_inc                       = +0.02
+condition_shot_dec                       = +0.00015
+condition_queue_shot_dec                 = +0.00015
+
+inv_weight                               = +0.25
+
+[up_sect_thirda_toz34_caliber_pkm_100];PKM setup
+cost                                     = 9000
+value                                    = "7.62x54 PKM"
+ammo_class                               = ammo_7.62x54_7h1, ammo_7.62x54_7h1_bad, ammo_7.62x54_7h1_verybad, ammo_7.62x54_ap, ammo_7.62x54_ap_bad, ammo_7.62x54_ap_verybad, ammo_7.62x54_7h14, ammo_7.62x54_7h14_bad, ammo_7.62x54_7h14_verybad, ammo_pkm_100, ammo_pkm_100_bad, ammo_pkm_100_verybad
+
+cam_dispersion                           = +0.12
+zoom_cam_dispersion						 = +0.06
+cam_dispersion_inc                       = +0.02
+condition_shot_dec                       = +0.00015
+condition_queue_shot_dec                 = +0.00015
+
+inv_weight                               = +0.2
+
+;----------------------------------------------------------------------------------------------------------------------
+[up_firsta_toz34_caliber_338_federal]
+scheme_index                             = 0, 0
+known                                    = 1
+effects                                  = up_gr_firstcd_toz34_obrez
+section                                  = up_sect_firsta_toz34_caliber_338_federal
+property                                 = prop_calibre
+
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_glock17_45acp_name
+description                              = st_up_add_b3_descr
+icon                                     = ui_inGame2_upgrade_Marta_15
+
+
+[up_secona_toz34_caliber_magnum_300]
+scheme_index                             = 0, 1
+known                                    = 1
+effects                                  = up_gr_seconcd_toz34_obrez
+section                                  = up_sect_secona_toz34_caliber_magnum_300
+property                                 = prop_calibre
+
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_glock17_45acp_name
+description                              = st_up_add_b3_descr
+icon                                     = ui_inGame2_upgrade_Marta_15
+
+[up_thirda_toz34_caliber_pkm_100]
+scheme_index                             = 0, 2
+known                                    = 1
+effects                                  = up_gr_thirdcd_toz34_obrez
+section                                  = up_sect_thirda_toz34_caliber_pkm_100
+property                                 = prop_calibre
+
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_glock17_45acp_name
+description                              = st_up_add_b3_descr
+icon                                     = ui_inGame2_upgrade_Marta_15
+
+
+;----------------------------------------------------------------------------------------------------------------------
+[up_gr_firstab_toz34_caliber1]
+elements                                 = up_firsta_toz34_caliber_338_federal
+
+[up_gr_seconab_toz34_caliber1]
+elements                                 = up_secona_toz34_caliber_magnum_300
+
+[up_gr_thirdab_toz34_caliber1]
+elements                                 = up_thirda_toz34_caliber_pkm_100
+
+;----------------------------------------------------------------------------------------------------------------------
+;----------------------------------------------------------------------------------------------------------------------
+;----------------------------------------------------------------------------------------------------------------------
+
+[up_sect_firsta_toz34_caliber_12x70];12ga
+cost                                     = 3000
+value                                    = "12x70"
+
+ammo_class                               = ammo_12x70_buck, ammo_12x70_buck_bad, ammo_12x70_buck_verybad, ammo_12x76_zhekan, ammo_12x76_zhekan_bad, ammo_12x76_zhekan_verybad, ammo_12x76_dart, ammo_12x76_dart_bad, ammo_12x76_dart_verybad, ammo_12x70_buck_self
+inv_weight                               = +0.1
+
+[up_sect_secona_toz34_caliber_20x70];20g
+cost                                     = 2500
+value                                    = "20x70"
+
+fire_dispersion_base                     = +0.07
+ammo_class                               = ammo_20x70_buck
+inv_weight                               = -0.1
+
+[up_sect_thirda_toz34_caliber_23x75];23mm
+cost                                     = 6000
+value                                    = "23x75"
+ammo_class                 				 = ammo_23x75_shrapnel, ammo_23x75_barrikada
+
+fire_dispersion_base                     = -0.09
+cam_dispersion                           = +0.12
+zoom_cam_dispersion						 = +0.06
+cam_dispersion_inc                       = +0.02
+condition_shot_dec                       = +0.00015
+condition_queue_shot_dec                 = +0.00015
+
+;----------------------------------------------------------------------------------------------------------------------
+[up_firsta_toz34_caliber_12x70]
+scheme_index                             = 0, 0
+known                                    = 1
+effects                                  = up_gr_firstcd_toz34_obrez
+section                                  = up_sect_firsta_toz34_caliber_12x70
+property                                 = prop_calibre
+
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_glock17_45acp_name
+description                              = st_up_add_b3_descr
+icon                                     = ui_inGame2_upgrade_Marta_15
+
+
+[up_secona_toz34_caliber_20x70]
+scheme_index                             = 0, 1
+known                                    = 1
+effects                                  = up_gr_seconcd_toz34_obrez
+section                                  = up_sect_secona_toz34_caliber_20x70
+property                                 = prop_calibre
+
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_glock17_45acp_name
+description                              = st_up_add_b3_descr
+icon                                     = ui_inGame2_upgrade_Marta_15
+
+
+[up_thirda_toz34_caliber_23x75]
+scheme_index                             = 0, 2
+known                                    = 1
+effects                                  = up_gr_thirdcd_toz34_obrez
+section                                  = up_sect_thirda_toz34_caliber_23x75
+property                                 = prop_calibre
+
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_glock17_45acp_name
+description                              = st_up_add_b3_descr
+icon                                     = ui_inGame2_upgrade_Marta_15
+
+;----------------------------------------------------------------------------------------------------------------------
+[up_gr_firstab_toz34_caliber2]
+elements                                 = up_firsta_toz34_caliber_12x70
+
+[up_gr_seconab_toz34_caliber2]
+elements                                 = up_secona_toz34_caliber_20x70
+
+[up_gr_thirdab_toz34_caliber2]
+elements                                 = up_thirda_toz34_caliber_23x75
