@@ -1,0 +1,17 @@
+local defaults = {
+	["disable_restrictions"] = false,
+}
+
+function get_config(key)
+    if ui_mcm then return ui_mcm.get("cxv_caliber_convert/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+	local options = {
+		id = "cxv_caliber_convert", sh = true, gr = {
+			{ id = "title", type = "slide", link = "ui_options_slider_player", text = "ui_mcm_cxv_caliber_convert_title", size = { 512, 50 }, spacing = 20 },
+			{id = "disable_restrictions", 		  	  type = "check", val = 1, 								  def = false},
+		}
+	}
+	return options
+end

@@ -74,7 +74,9 @@ function get_weapon_category(obj)	-- weapon
 	end
     return kind
 end
+local get_config = cxv_caliber_drag_upgrades_mcm.get_config
 
+ignore_restrictions = get_config("disable_restrictions") or false
 --------------------------------------------------------------------------------------------------------------
 
 function cxv_caliber_conversion_drag_drop(obj_dragged, obj_wpn, slot_from, slot_to)
@@ -92,7 +94,7 @@ function cxv_caliber_conversion_drag_drop(obj_dragged, obj_wpn, slot_from, slot_
         return
     end
 	
-	-- printf("[CXV Caliber] Item being dragged: %s | Item dragged to: %s", obj_dragged:section(), obj_wpn:section())
+	printf("[CXV Caliber] Item being dragged: %s | Item dragged to: %s | Ignore restrictions? %s", obj_dragged:section(), obj_wpn:section(), ignore_restrictions)
 	
 	local weapon_category = get_weapon_category(obj_wpn)
 	if weapon_category == "empty hands" then
@@ -102,6 +104,13 @@ function cxv_caliber_conversion_drag_drop(obj_dragged, obj_wpn, slot_from, slot_
 	
 	local wpn_sec = obj_wpn:section()
 	if not wpn_sec then return end
+	
+	-- if option to disable restrictions is enabled, go straight into upgrading
+	if ignore_restrictions then
+		try_caliber_change(obj_dragged, obj_wpn)
+		alife_release(obj_dragged)
+		return
+	end
 	
 	-- Exception checking first...
 	-- rifle exception
@@ -297,9 +306,29 @@ function ActorMenu_on_item_focus_receive(obj) -- highlight compatible items
 				return
 			end
 			
+			if disable_restrictions then	-- messy, I know
+				for c_upgr,_ in pairs(pistol_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+				for c_upgr,_ in pairs(rifle_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+				for c_upgr,_ in pairs(sniper_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+				for c_upgr,_ in pairs(lmg_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+				for c_upgr,_ in pairs(heavy_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+				for c_upgr,_ in pairs(shotgun_upgrades) do
+					focus_tbl[#focus_tbl + 1] = c_upgr
+				end
+				
 			-- Exception checking first...
 			-- rifle exception
-			if rifle_excpetions[wep_focus] then 
+			elseif rifle_excpetions[wep_focus] then 
 				for c_upgr,_ in pairs(rifle_upgrades) do
 					focus_tbl[#focus_tbl + 1] = c_upgr
 				end
@@ -401,11 +430,17 @@ function ActorMenu_on_item_focus_receive(obj) -- highlight compatible items
 	end
 end
 
-
+function on_option_change()
+	if ui_mcm then
+		ignore_restrictions = get_config("disable_restrictions") or false
+	end
+end
 
 function on_game_start()
+	RegisterScriptCallback("on_option_change",on_option_change)
 	RegisterScriptCallback("ActorMenu_on_item_focus_receive",ActorMenu_on_item_focus_receive)
 	RegisterScriptCallback("ActorMenu_on_item_drag_drop", cxv_caliber_conversion_drag_drop)
+	on_option_change()
 end
 
 --------------------------------------------------------------------------------------------------------------

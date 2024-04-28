@@ -4,6 +4,22 @@
 -->
 <string_table>
 	
+	<string id="ui_mcm_menu_cxv_caliber_convert">
+		<text>Caliber Conversions</text>
+	</string>
+	<string id="ui_mcm_cxv_caliber_convert_title">
+		<text>CXV Caliber Conversions</text>
+	</string>
+	
+	<string id="ui_mcm_cxv_caliber_convert_disable_restrictions">
+		<text>Disable Restrictions?</text>
+	</string>
+	<string id="ui_mcm_cxv_caliber_convert_disable_restrictions_desc">
+		<text>Turning this on will allow any conversion kits on valid waepons.\n
+		/nNOTE: Highlights on kits will not update until reloading your save.</text>
+	</string>
+	
+	
 	<string id="cxv_tooltip_dot">
 		<text>•</text>
 	</string>
