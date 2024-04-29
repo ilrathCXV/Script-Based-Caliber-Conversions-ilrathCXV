@@ -55,7 +55,7 @@
 		<text>%c[d_red]This weapon cannot accept that conversion. Try again.</text>
 	</string>
 	<string id="cxv_conversion_success_msg">
-		<text>%c[d_green]You have successfully converted you weapon with the</text>
+		<text>%c[d_green]You have successfully converted your weapon with the</text>
 	</string>
 	
 	<!-- Pistol/SMGs -->
