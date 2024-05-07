@@ -26,6 +26,10 @@ local sniper_upgrades = {
 	["upgr_caliber_7.92x33"] = true,
 	["upgr_caliber_338_lapua"] = true,
 	["upgr_caliber_338_federal"] = true,
+	["upgr_caliber_50_bmg"] = true,
+	["upgr_caliber_gauss"] = true,
+	-- because why not
+	["upgr_caliber_357"] = true,
 }
 
 local lmg_upgrades = {
@@ -39,6 +43,7 @@ local lmg_upgrades = {
 local heavy_upgrades = {
 	["upgr_caliber_338_lapua"] = true,
 	["upgr_caliber_338_federal"] = true,
+	["upgr_caliber_50_bmg"] = true,
 	["upgr_caliber_pkm_100"] = true,
 }
 
@@ -72,6 +77,10 @@ function get_weapon_category(obj)	-- weapon
 	if ignored_category[kind] then
 		return "empty hands"
 	end
+	
+	-- special case for ATHI's minigun
+	if obj:section() == "wpn_m134" then return "w_heavy" end
+	
     return kind
 end
 local get_config = cxv_caliber_drag_upgrades_mcm.get_config
@@ -433,6 +442,9 @@ end
 function on_option_change()
 	if ui_mcm then
 		ignore_restrictions = get_config("disable_restrictions") or false
+		-- possibly resets the highlight tables?
+		focus_last_sec = nil
+		empty_table(focus_tbl)
 	end
 end
 
@@ -444,17 +456,6 @@ function on_game_start()
 end
 
 --------------------------------------------------------------------------------------------------------------
-
--- Streamlined Kits monkeypatch
---base_kit_binder = kit_binder.kit_binder.update
---
---kit_binder.kit_binder.update = function(self, delta)
---	local obj  = self.object
---	local sec = obj:section()
---	
---	if string.find(sec, "upgr_caliber") then return end
---	base_kit_binder(self, delta)
---end
 
 -- WPO shuts up about non-compat. part
 base_part_drop = arti_jamming.on_item_drag_dropped
@@ -469,7 +470,7 @@ end
 
 --------------------------------------------------------------------------------------------------------------
 
--- Show class in tooltip
+-- Show class in tooltip (only if restrictions are enabled)
 build_footer_base = ui_item.build_desc_footer
 function ui_item.build_desc_footer(obj, sec, str)
 	str = str or gt(ini_sys:r_string_ex(sec, "description"))
@@ -477,6 +478,8 @@ function ui_item.build_desc_footer(obj, sec, str)
 	
 	-- if item is not a valid weapon...
 	if not IsWeapon(obj) or IsItem("fake_ammo_wpn",sec) then return build_footer_base(obj, sec, str) end
+	
+	if disable_restrictions then return build_footer_base(obj, sec, str) end
 	
 	local weapon_category = get_weapon_category(obj)
 	if weapon_category == "empty hands" then return build_footer_base(obj, sec, str) end
@@ -488,6 +491,7 @@ function ui_item.build_desc_footer(obj, sec, str)
 	local class_str
 	
 	if rifle_excpetions[sec] then weapon_category = "w_rifle" end
+	if heavy_excpetions[sec] then weapon_category = "w_heavy" end
 	
 	-- pistol/SMG checking
 	if (weapon_category == "w_pistol") or (weapon_category == "w_smg") then
@@ -508,10 +512,13 @@ function ui_item.build_desc_footer(obj, sec, str)
 	if (weapon_category == "w_rifle") then
 		-- weight for checking for LMGs (base weight, not upgraded weight) - based off of "Outfits Affect Movespeed"
 		local weight = ini_sys:r_float_ex(sec, "inv_weight")
+		-- AR only
 		if weight <= 3.5 then
 			class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_ar_title") .. "\\n \\n" .. def_clr
+		-- AR + LMG
 		elseif weight <= 5.86 then
 			class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_ar_title") .. ", " .. gt("cxv_class_lmg_title") .. "\\n \\n" .. def_clr
+		-- LMG + HMG
 		else
 			class_str = "\\n " .. p_clr .. gt("cxv_tooltip_dot") .. " " .. def_clr .. gt("cxv_class_base_title") .. " " .. w_clr .. gt("cxv_class_lmg_title") .. ", " .. gt("cxv_class_heavy_title") .. "\\n \\n" .. def_clr
 		end

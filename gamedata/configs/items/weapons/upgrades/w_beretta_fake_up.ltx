@@ -516,3 +516,80 @@ elements                                 = up_fourta_beretta_caliber_7.92x33
 
 [up_gr_fifthab_beretta3_caliber]
 elements                                 = up_fiftha_beretta_caliber_7.62x54
+
+;----------------------------------------------------------------------------------------------------------------------
+;----------------------------------------------------------------------------------------------------------------------
+;----------------------------------------------------------------------------------------------------------------------
+
+[up_sect_firsta_beretta_caliber_50_bmg]; .50 BMG
+cost                                     = 9500
+value                                    = ".50 BMG"
+ammo_class                               = ammo_50_bmg, ammo_50_bmg_bad, ammo_50_bmg_verybad
+
+cam_dispersion                           = +0.12
+zoom_cam_dispersion						 = +0.06
+cam_dispersion_inc                       = +0.02
+condition_shot_dec                       = +0.0002
+condition_queue_shot_dec                 = +0.0002
+
+inv_weight                               = +0.2
+
+[up_sect_secona_beretta_caliber_gauss]; Gauss
+cost                                     = 50000
+value                                    = "Gauss Batteries"
+ammo_class                 				 = ammo_gauss, ammo_gauss_bad, ammo_gauss_verybad
+
+flame_particles             			 = weapons\generic_weapon_gauss
+
+cam_dispersion                           = -0.12
+zoom_cam_dispersion						 = -0.06
+cam_dispersion_inc                       = -0.02
+condition_shot_dec                       = +0.0008
+condition_queue_shot_dec                 = +0.0008
+
+inv_weight                               = +1.0
+;----------------------------------------------------------------------------------------------------------------------
+
+[up_firsta_beretta_caliber_50_bmg]
+scheme_index                             = 0, 0
+known                                    = 1
+effects                                  = ; up_gr_firstcd_beretta
+section                                  = up_sect_firsta_beretta_caliber_50_bmg
+property                                 = prop_calibre
+
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_glock17_45acp_name
+description                              = st_up_add_b3_descr
+icon                                     = ui_inGame2_upgrade_Marta_15
+
+[up_secona_beretta_caliber_gauss]
+scheme_index                             = 0, 1
+known                                    = 1
+effects                                  = ; up_gr_seconcd_beretta
+section                                  = up_sect_secona_beretta_caliber_gauss
+property                                 = prop_calibre
+
+precondition_functor                     = inventory_upgrades.precondition_functor_a
+precondition_parameter                   = a & b
+effect_functor                           = inventory_upgrades.effect_functor_a
+effect_parameter                         = something_here
+
+prereq_functor                           = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                   = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                            =
+name                                     = st_up_glock17_45acp_name
+description                              = st_up_add_b3_descr
+icon                                     = ui_inGame2_upgrade_Marta_15
+;----------------------------------------------------------------------------------------------------------------------
+[up_gr_firstab_beretta4_caliber]
+elements                                 = up_firsta_beretta_caliber_50_bmg
+
+[up_gr_seconab_beretta4_caliber]
+elements                                 = up_secona_beretta_caliber_gauss

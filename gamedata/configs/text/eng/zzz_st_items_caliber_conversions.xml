@@ -58,16 +58,16 @@
 		<text>%c[d_green]You have successfully converted your weapon with the</text>
 	</string>
 	
-	<!-- Pistol/SMGs -->
+	<!-- Pistol/SMGs pda_white-->
 	
 	<string id="st_upgr_caliber_9x19">
 		<text>Conversion Kit - 9x19mm </text>
 	</string>
 	<string id="st_upgr_caliber_9x19_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable pistols and SMGs to use 9x19mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Pistol, SMG\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n 
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Pistol, SMG\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n 
 		</text>
 	</string>
 	
@@ -76,9 +76,9 @@
 	</string>
 	<string id="st_upgr_caliber_9x18_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable pistols and SMGs to use 9x18mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Pistol, SMG\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n 
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Pistol, SMG\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n 
 		</text>
 	</string>
 	
@@ -87,9 +87,9 @@
 	</string>
 	<string id="st_upgr_caliber_11.43x23_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable pistols and SMGs to use .45 ACP ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Pistol, SMG\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n 
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Pistol, SMG\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n 
 		</text>
 	</string>
 	
@@ -98,9 +98,9 @@
 	</string>
 	<string id="st_upgr_caliber_357_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable pistols and SMGs to use .357 Magnum ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Pistol, SMG\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n 
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Pistol, SMG, Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n 
 		</text>
 	</string>
 	
@@ -109,9 +109,9 @@
 	</string>
 	<string id="st_upgr_caliber_7.62x25_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable pistols and SMGs to use 7.62 Tokarev ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Pistol, SMG\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Pistol, SMG\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -120,9 +120,9 @@
 	</string>
 	<string id="st_upgr_caliber_5.7x28_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable pistols and SMGs to use 5.7x28mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Pistol, SMG\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Pistol, SMG\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -131,9 +131,9 @@
 	</string>
 	<string id="st_upgr_caliber_9x21_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable pistols and SMGs to use 9x21mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Pistol, SMG\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Pistol, SMG\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -143,9 +143,9 @@
 	</string>
 	<string id="st_upgr_caliber_5.45x39_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 5.45x39mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Assault Rifle\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Assault Rifle\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -154,9 +154,9 @@
 	</string>
 	<string id="st_upgr_caliber_5.56x45_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 5.56x45mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Assault Rifle, Light Machine Guns\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Assault Rifle, Light Machine Guns\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -165,9 +165,9 @@
 	</string>
 	<string id="st_upgr_caliber_7.62x39_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 7.62x39mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Assault Rifle, Machine Guns, Snipers\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Assault Rifle, Machine Guns, Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -176,9 +176,9 @@
 	</string>
 	<string id="st_upgr_caliber_7.62x51_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 7.62 NATO ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Assault Rifle, Machine Guns, Snipers\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Assault Rifle, Machine Guns, Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -187,9 +187,9 @@
 	</string>
 	<string id="st_upgr_caliber_12.7x55_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 12.7x55mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Assault Rifle, Machine Guns, Snipers, Shotguns\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Assault Rifle, Machine Guns, Snipers, Shotguns\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -198,9 +198,9 @@
 	</string>
 	<string id="st_upgr_caliber_9x39_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 9x39mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Assault Rifle, Snipers\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Assault Rifle, Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -210,9 +210,9 @@
 	</string>
 	<string id="st_upgr_caliber_7.62x54_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 7.62x54mm ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Snipers\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -221,9 +221,9 @@
 	</string>
 	<string id="st_upgr_caliber_7.92x33_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 7.92 Mauser ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Machine Guns, Snipers\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Machine Guns, Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -232,9 +232,9 @@
 	</string>
 	<string id="st_upgr_caliber_338_federal_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use .338 Federal ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Heavy Machine Guns, Snipers\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Heavy Machine Guns, Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -243,9 +243,31 @@
 	</string>
 	<string id="st_upgr_caliber_338_lapua_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use .338 Lapua ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Heavy Machine Guns, Snipers\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Heavy Machine Guns, Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		</text>
+	</string>
+	
+	<string id="st_upgr_caliber_50_bmg">
+		<text>Conversion Kit - .50 BMG </text>
+	</string>
+	<string id="st_upgr_caliber_50_bmg_desc">
+		<text>This specialty upgrade kit allows the user to convert suitable platforms to use .50 BMG ammunition.\n 
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Heavy Machine Guns, Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		</text>
+	</string>
+	
+	<string id="st_upgr_caliber_gauss">
+		<text>Conversion Kit - Gauss Batteries </text>
+	</string>
+	<string id="st_upgr_caliber_gauss_desc">
+		<text>This specialty upgrade kit allows the user to convert suitable platforms to use experimental Gauss Batteries.\n 
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Snipers\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -255,9 +277,9 @@
 	</string>
 	<string id="st_upgr_caliber_12x70_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 12-gauge shotgun ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Shotguns\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Shotguns\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -266,9 +288,9 @@
 	</string>
 	<string id="st_upgr_caliber_20x70_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 20-gauge shotgun ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Shotguns\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Shotguns\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -277,9 +299,9 @@
 	</string>
 	<string id="st_upgr_caliber_23x75_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use 23x75mm shotgun ammunition.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Shotguns\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Shotguns\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
@@ -289,9 +311,9 @@
 	</string>
 	<string id="st_upgr_caliber_pkm_100_desc">
 		<text>This specialty upgrade kit allows the user to convert suitable platforms to use ammunition normally used by PKM-style platforms.\n 
-		%c[d_purple] • %c[ui_gray_2] SUITABLE WEAPON CLASSES: Heavy Machine Guns\n 
-		%c[d_purple] • %c[ui_gray_2] TO USE: Drag this item onto a suitable weapon in your backpack\n 
-		%c[d_red]  • %c[ui_gray_2] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
+		%c[d_purple] • %c[pda_white] SUITABLE WEAPON CLASSES: %c[ui_gray_2]Heavy Machine Guns\n 
+		%c[d_purple] • %c[pda_white] TO USE: %c[ui_gray_2]Drag this item onto a suitable weapon in your backpack\n 
+		%c[d_red]  • %c[pda_white] WEAPON MUST NOT BE EQUIPPED WHEN ATTEMPTING TO CONVERT\n \n
 		</text>
 	</string>
 	
