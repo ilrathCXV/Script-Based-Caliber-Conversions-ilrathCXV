@@ -14,6 +14,8 @@
 
 This takes advantage of the Modded Exes "unlocalizer" to ensure WPO doesn't keep spitting a message about "not a valid part", as well as utilizing DLTX. This also utilizes BaS as this was made for GAMMA without Mags Redux.
 
+Video showcasing the mod at work can be found here: https://www.youtube.com/watch?v=Pk3NB1ETElw
+
 ## Caliber Conversion List
 All caliber conversions are obtainable through crafting.
 
